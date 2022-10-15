@@ -13,8 +13,8 @@ async function bootstrap() {
   );
 
   const config = new DocumentBuilder()
-    .setTitle("Platzi API")
-    .setDescription("Documentación Platzi API")
+    .setTitle("Backend Ecommerce")
+    .setDescription("Documentación Backend Ecommerce")
     .setVersion("1.0")
     .build();
   const document = SwaggerModule.createDocument(app, config);
