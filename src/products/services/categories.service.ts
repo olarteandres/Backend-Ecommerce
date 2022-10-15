@@ -1,7 +1,7 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException } from "@nestjs/common";
 
-import { Category } from '../entities/category.entity';
-import { CreateCategoryDto, UpdateCategoryDto } from '../dtos/category.dtos';
+import { Category } from "../entities/category.entity";
+import { CreateCategoryDto, UpdateCategoryDto } from "../dtos/category.dtos";
 
 @Injectable()
 export class CategoriesService {
@@ -9,7 +9,7 @@ export class CategoriesService {
   private categories: Category[] = [
     {
       id: 1,
-      name: 'Category 1',
+      name: "Category 1",
     },
   ];
 

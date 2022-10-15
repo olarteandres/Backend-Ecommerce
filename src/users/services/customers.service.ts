@@ -1,7 +1,7 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException } from "@nestjs/common";
 
-import { Customer } from '../entities/customer.entity';
-import { CreateCustomerDto, UpdateCustomerDto } from '../dtos/customer.dto';
+import { Customer } from "../entities/customer.entity";
+import { CreateCustomerDto, UpdateCustomerDto } from "../dtos/customer.dto";
 
 @Injectable()
 export class CustomersService {
@@ -9,9 +9,9 @@ export class CustomersService {
   private customers: Customer[] = [
     {
       id: 1,
-      name: 'Nicolas',
-      lastName: 'Molina',
-      phone: '3111111212',
+      name: "Nicolas",
+      lastName: "Molina",
+      phone: "3111111212",
     },
   ];
 
