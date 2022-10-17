@@ -1,5 +1,5 @@
-import { Controller, Get, Param, Query } from "@nestjs/common";
-import { AppService } from "./app.service";
+import { Controller, Get, Param, Query } from '@nestjs/common';
+import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
@@ -10,13 +10,18 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get("nuevo")
+  @Get('nuevo')
   newEndpoint() {
-    return "yo soy nuevo";
+    return 'yo soy nuevo';
   }
 
-  @Get("/ruta/")
+  @Get('/ruta/')
   hello() {
-    return "con /sas/";
+    return 'con /sas/';
+  }
+
+  @Get('tasks')
+  tasks() {
+    return this.appService.getTasks();
   }
 }
