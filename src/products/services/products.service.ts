@@ -39,7 +39,7 @@ export class ProductsService {
     });
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     const product = await this.productRepo.findOne(id, {
       relations: ['brand', 'categories'],
     });
@@ -63,7 +63,7 @@ export class ProductsService {
     return this.productRepo.save(newProduct);
   }
 
-  async update(id: number, changes: UpdateProductDto) {
+  async update(id: string, changes: UpdateProductDto) {
     const product = await this.productRepo.findOne(id);
     if (changes.brandId) {
       const brand = await this.brandRepo.findOne(changes.brandId);
@@ -79,7 +79,7 @@ export class ProductsService {
     return this.productRepo.save(product);
   }
 
-  async removeCategoryByProduct(productId: number, categoryId: number) {
+  async removeCategoryByProduct(productId: string, categoryId: number) {
     const product = await this.productRepo.findOne(productId, {
       relations: ['categories'],
     });
@@ -89,7 +89,7 @@ export class ProductsService {
     return this.productRepo.save(product);
   }
 
-  async addCategoryToProduct(productId: number, categoryId: number) {
+  async addCategoryToProduct(productId: string, categoryId: number) {
     const product = await this.productRepo.findOne(productId, {
       relations: ['categories'],
     });
@@ -98,7 +98,7 @@ export class ProductsService {
     return this.productRepo.save(product);
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.productRepo.delete(id);
   }
 }

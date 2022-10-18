@@ -22,6 +22,7 @@ import {
   FilterProductsDto,
 } from '../dtos/products.dtos';
 import { ProductsService } from './../services/products.service';
+import { UuIdPipe } from 'src/common/uuid-pipe';
 
 @ApiTags('products')
 @Controller('products')
@@ -41,7 +42,7 @@ export class ProductsController {
 
   @Get(':productId')
   @HttpCode(HttpStatus.ACCEPTED)
-  getOne(@Param('productId', ParseIntPipe) productId: number) {
+  getOne(@Param('productId', UuIdPipe) productId: string) {
     // response.status(200).send({
     //   message: `product ${productId}`,
     // });
@@ -54,26 +55,26 @@ export class ProductsController {
   }
 
   @Put(':id')
-  update(@Param('id') id: number, @Body() payload: UpdateProductDto) {
+  update(@Param('id, UuIdPipe') id: string, @Body() payload: UpdateProductDto) {
     return this.productsService.update(id, payload);
   }
 
   @Put(':id/category/:categoryId')
   addCategoryToProduct(
-    @Param('id') id: number,
+    @Param('id', UuIdPipe) id: string,
     @Param('categoryId', ParseIntPipe) categoryId: number,
   ) {
     return this.productsService.addCategoryToProduct(id, categoryId);
   }
 
   @Delete(':id')
-  delete(@Param('id') id: number) {
+  delete(@Param('id', UuIdPipe) id: string) {
     return this.productsService.remove(id);
   }
 
   @Delete(':id/category/:categoryId')
   deleteCategory(
-    @Param('id', ParseIntPipe) id: number,
+    @Param('id', UuIdPipe) id: string,
     @Param('categoryId', ParseIntPipe) categoryId: number,
   ) {
     return this.productsService.removeCategoryByProduct(id, categoryId);

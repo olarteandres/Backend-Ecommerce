@@ -1,3 +1,4 @@
+import { IsUrl, Length } from 'class-validator';
 import {
   PrimaryGeneratedColumn,
   Column,
@@ -17,13 +18,14 @@ import { Category } from './category.entity';
 @Entity({ name: 'products' })
 @Index(['price', 'stock'])
 export class Product {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column({ type: 'varchar', length: 255, unique: true })
   name: string;
 
-  @Column({ type: 'text' })
+  @Column({ type: 'varchar', length: 300, nullable: false })
+  @Length(25, 300)
   description: string;
 
   @Index()
@@ -35,6 +37,15 @@ export class Product {
 
   @Column({ type: 'varchar' })
   image: string;
+
+  @Column({ type: 'varchar' })
+  tags: string;
+
+  @Column({ type: 'varchar' })
+  addInfo: string;
+
+  @Column({ type: 'int' })
+  assessment: number;
 
   @CreateDateColumn({
     name: 'create_at',
