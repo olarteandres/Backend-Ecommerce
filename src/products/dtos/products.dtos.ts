@@ -68,7 +68,7 @@ export class CreateProductDto {
 
 export class UpdateProductDto extends PartialType(CreateProductDto) {}
 
-export class FilterProductsDto {
+export class FilterProductsDto extends PartialType(CreateProductDto)  {
   @IsOptional()
   @IsPositive()
   limit: number;
