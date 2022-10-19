@@ -11,7 +11,10 @@ import {
 
 import { UsersService } from '../services/users.service';
 import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto';
+import { UuIdPipe } from 'src/common/uuid-pipe';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('users')
 @Controller('users')
 export class UsersController {
   constructor(private usersService: UsersService) {}
@@ -27,12 +30,12 @@ export class UsersController {
   }
 
   @Get(':id')
-  get(@Param('id', ParseIntPipe) id: number) {
+  get(@Param('id', UuIdPipe) id: string) {
     return this.usersService.findOne(id);
   }
 
   @Get(':id/orders')
-  getOrders(@Param('id', ParseIntPipe) id: number) {
+  getOrders(@Param('id', UuIdPipe) id: string) {
     return this.usersService.getOrderByUser(id);
   }
 
@@ -43,14 +46,14 @@ export class UsersController {
 
   @Put(':id')
   update(
-    @Param('id', ParseIntPipe) id: number,
+    @Param('id', UuIdPipe) id: string,
     @Body() payload: UpdateUserDto,
   ) {
     return this.usersService.update(id, payload);
   }
 
   @Delete(':id')
-  remove(@Param('id', ParseIntPipe) id: number) {
+  remove(@Param('id', UuIdPipe) id: string) {
     return this.usersService.remove(+id);
   }
 }

@@ -74,7 +74,7 @@ export class FilterProductsDto {
   limit: number;
 
   @IsOptional()
-  @Min(0)
+  @Min(10)
   offset: number;
 
   @IsOptional()
